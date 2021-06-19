@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>基于深度学习的白内障诊断系统大创项目</title>
+
+<!-- Fav Icon -->
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link href="../static/css/font-awesome-all.css" rel="stylesheet">
+<link href="../static/css/flaticon.css" rel="stylesheet">
+<link href="../static/css/owl.css" rel="stylesheet">
+<link href="../static/css/bootstrap.css" rel="stylesheet">
+<link href="../static/css/jquery.fancybox.min.css" rel="stylesheet">
+<link href="../static/css/animate.css" rel="stylesheet">
+<link href="../static/css/imagebg.css" rel="stylesheet">
+<link href="../static/css/global.css" rel="stylesheet">
+<link href="../static/css/header.css" rel="stylesheet">
+<link href="../static/css/style.css" rel="stylesheet">
+<link href="../static/css/responsive.css" rel="stylesheet">
+
+
+</head>
+
+<!-- page wrapper -->
+<body class="boxed_wrapper">
+
+    <!-- preloader -->
+    <div class="preloader">
+        <div id="handle-preloader" class="handle-preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
+                <div class="txt-loading">
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="I" class="letters-loading">
+                        I
+                    </span>
+                    <span data-text-preloader="L" class="letters-loading">
+                        L
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="B" class="letters-loading">
+                        B
+                    </span>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <!-- preloader end -->
+    
+    <!-- main header -->
+    <header class="main-header style-three">
+        <div class="header-upper">
+            <div class="outer-box clearfix">
+                <div class="left-column pull-left clearfix">
+                    <div class="logo-box pull-left">
+                        <figure class="logo"><a href="{{url_for('show_index')}}"><img src="../static/images/logo-3-copy.png" alt=""></a></figure>
+                    </div>
+                    <div class="menu-area pull-right clearfix">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li class="current"><a href="{{url_for('show_index')}}">主页&ensp;丨&ensp;</a>
+                                    </li> 
+                                    <li class="dropdown"><a href="{{url_for('show_project')}}">项目   </a>
+                                        <ul>
+                                            <li><a href="{{url_for('show_bnz')}}">白内障诊断<i class="flaticon-next"></i></a></li>
+                                            <li><a href="{{url_for('show_project')}}">了解更多<i class="flaticon-next"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{url_for('show_team')}}">&ensp;丨&ensp;团队</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="right-column pull-right clearfix">
+                    <div class="btn-box"><a href="{{url_for('show_index')}}" class="theme-btn style-six">联系我们</a></div>
+                    <div class="language">
+                        <div class="lang-btn">
+                            <span class="flag"><img src="../static/images/icons/icon-lang.png" alt="" title="English"></span>
+                            <span class="txt">Eng</span>
+                            <span class="arrow fa fa-angle-down"></span>
+                        </div>
+                        <div class="lang-dropdown">
+                            <ul>
+                                <li><a href="{{url_for('show_index')}}">German</a></li>
+                                <li><a href="{{url_for('show_index')}}">Italian</a></li>
+                                <li><a href="{{url_for('show_index')}}">Chinese</a></li>
+                                <li><a href="{{url_for('show_index')}}">Russian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="social-links clearfix">
+                        <li><a href="#"><i class="fab fa-github fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-envelope fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-home fa-lg"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--sticky Header-->
+        <div class="sticky-header">
+            <div class="outer-box clearfix">
+                <div class="left-column pull-left">
+                    <figure class="logo-box"><a href="{{url_for('show_index')}}"><img src="../static/images/logo-3-copy.png" alt=""></a></figure>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+                <div class="right-column pull-right clearfix">
+                    <div class="btn-box"><a href="{{url_for('show_index')}}" class="theme-btn style-six">联系我们</a></div>
+                    <div class="language">
+                        <div class="lang-btn">
+                            <span class="flag"><img src="../static/images/icons/icon-lang.png" alt="" title="English"></span>
+                            <span class="txt">Eng</span>
+                            <span class="arrow fa fa-angle-down"></span>
+                        </div>
+                        <div class="lang-dropdown">
+                            <ul>
+                                <li><a href="{{url_for('show_index')}}">German</a></li>
+                                <li><a href="{{url_for('show_index')}}">Italian</a></li>
+                                <li><a href="{{url_for('show_index')}}">Chinese</a></li>
+                                <li><a href="{{url_for('show_index')}}">Russian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="social-links clearfix">
+                        <li><a href="#"><i class="fab fa-github fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-envelope fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-home fa-lg"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- main-header end -->
+
+    <!-- Mobile Menu  -->
+    <div class="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <div class="close-btn"><i class="fas fa-times"></i></div>
+        
+        <nav class="menu-box">
+            <div class="nav-logo"><a href="{{url_for('show_index')}}"><img src="../static/images/logo.png" alt="" title=""></a></div>
+            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+            <div class="contact-info">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>Chicago 12, Melborne City, USA</li>
+                    <li><a href="">+88 01682648101</a></li>
+                    <li><a href="mailto:info@example.com">info@example.com</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <ul class="clearfix">
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-twitter"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-facebook-square"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-pinterest-p"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-instagram"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-youtube"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- End Mobile Menu -->
+
+    <!-- banner-section -->
+    <section class="banner-style-three">
+        <div class="pattern-layer" style="background-image: url(../static/images/shape/shape-18-copy2.png);"></div>
+        <div class="auto-container">
+            <div class="row clearfix align-items-center">
+                <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                    <div class="content-box">
+                        <h1>Cataract Diagnosis<br />With<br /> Machine Learning</h1>
+                        <p >基于深度学习的白内障诊断系统大创项目<br />开发小组</p>
+                        <div class="btn-box">
+                            <a href="#jump0" class="theme-btn style-six"><i class="flaticon-next"></i>开始</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner-section end -->
+
+
+    <!-- chooseus-style-two -->
+    <section class="chooseus-style-two bg-color-3" id="jump0">
+        <div class="bg-layer" style="background-image: url(../static/images/background/choose-bg.png);"></div>
+        <div class="auto-container">
+            <div class="title-inner mb-35 clearfix">
+                <div class="sec-title light text-left pull-left">
+                    <p>PROJECTS</p>
+                    <h2>项目一览</h2>
+                    <div class="decor" style="background-image: url(../static/images/icons/decor-5.png);"></div>
+                </div>
+                <div class="text pull-right">
+                    <p style="font-size: 20px;">Learn about the detailed information about our project,<br />
+                        including our work flow, application and team information.</p>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-6 col-sm-12 single-column">
+                    <div class="single-item wow slideInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <h4><a href="{{url_for('show_project')}}">开发流程</a></h4>
+                            <div class="box">
+                                <div class="icon-box"><i class="flaticon-global"></i></div>
+                                <p>项目相关信息<br />系统开发流程<br />数据和准确率</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 single-column">
+                    <div class="single-item wow slideInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <h4><a href="{{url_for('show_bnz')}}">白内障诊断</a></h4>
+                            <div class="box">
+                                <div class="icon-box"><i class="flaticon-analysis"></i></div>
+                                <p>实用白内障诊断程序<br />识别白内障B超图像<br />辅助医生临床诊断</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 single-column">
+                    <div class="single-item wow slideInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <h4><a href="{{url_for('show_team')}}">团队信息</a></h4>
+                            <div class="box">
+                                <div class="icon-box"><i class="flaticon-medal"></i></div>
+                                <p>了解我们的团队</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- chooseus-style-two end -->
+
+    <!-- footer-style-three -->
+    <footer class="footer-style-three">
+        <div class="footer-top">
+            <div class="pattern-layer">
+                <div class="pattern-1" style="background-image: url(../static/images/shape/shape-60-copy.png);"></div>
+                <div class="pattern-2 wow slideInDown" data-wow-delay="00ms" data-wow-duration="3500ms" style="background-image: url(../static/images/shape/shape-61.png);"></div>
+            </div>
+            <div class="auto-container">
+                <div class="widget-section">
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget about-widget">
+                                <div class="widget-title">
+                                    <h3>关于团队</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="text">
+                                        <p>我们的目标是通过学习，研究深度学习算法，基于白内障B超图像，给出高准确率的诊断结果。
+                                            同时在开发的过程中，在问题的启发下，不断完善，改进算法。</p>
+                                    </div>
+                                    <figure class="footer-logo"><a href="{{url_for('show_index')}}"><img src="../static/images/footer-logo-3-copy.png" alt=""></a></figure>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget links-widget">
+                                <div class="widget-title">
+                                    <h3>一些链接</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="clearfix">
+                                        <li><a href="{{url_for('show_index')}}">Video Intelligence</a></li>
+                                        <li><a href="{{url_for('show_index')}}">Computer Vision</a></li>
+                                        <li><a href="{{url_for('show_index')}}">Speech Recognition</a></li>
+                                        <li><a href="{{url_for('show_index')}}">Technology Stack</a></li>
+                                        <li><a href="{{url_for('show_index')}}">NL Understanding</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget contact-widget">
+                                <div class="widget-title">
+                                    <h3>联系我们</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="clearfix"> 
+                                        <li>
+                                            <span>电话:</span>
+                                            <a href="">+00 123456789</a>
+                                        </li>
+                                        <li>
+                                            <span>邮箱:</span>
+                                            <a href="#">our@email.com</a>
+                                        </li>
+                                        <li>
+                                            <span>地址:</span>
+                                            四川大学江安校区，成都，中国
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget subscribe-widget">
+                                <div class="widget-title">
+                                    <h3>反馈信息</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="subscribe-form">
+                                        <form action="mailto:1121015425@qq.com" method="post">
+                                            <div class="form-group">
+                                                <input type="subject" name="email" placeholder="您的建议" required="">
+                                                <button type="submit" class="theme-btn style-six">提交</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <ul class="social-links clearfix">
+                                        <li><a href="#"><i class="fab fa-github fa-lg"></i></a></li>
+                                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-envelope fa-lg"></i></a></li>
+                                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-home fa-lg"></i></a></li>
+                                        <li><a href="{{url_for('show_index')}}"><i class="fab fa-google-plus-g"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom main-footer">
+            <div class="auto-container clearfix">
+                <div class="copyright pull-left">
+                    <p>Powered by &copy; <a href="http://www.bootstrapmb.com/">Naxly</a>.</p>
+                </div>
+                <ul class="footer-nav pull-right">
+                    <li><a href="{{url_for('show_index')}}">Privacy Policy</a></li>
+                    <li><a href="{{url_for('show_index')}}">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- footer-style-three end -->
+
+<!--Scroll to top-->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="fas fa-angle-up"></span>
+</button>
+
+
+<!-- jequery plugins -->
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/owl.js"></script>
+<script src="../static/js/wow.js"></script>
+<script src="../static/js/validation.js"></script>
+<script src="../static/js/jquery.fancybox.js"></script>
+<script src="../static/js/appear.js"></script>
+<script src="../static/js/jquery.countTo.js"></script>
+<script src="../static/js/scrollbar.js"></script>
+<script src="../static/js/tilt.jquery.js"></script>
+<script src="../static/js/bxslider.js"></script>
+
+<!-- main-js -->
+<script src="../static/js/script.js"></script>
+
+</body><!-- End of .page_wrapper -->
+</html>
+    

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>基于深度学习的白内障诊断系统大创项目</title>
+
+<!-- Fav Icon -->
+<link rel="shortcut icon" href="#" />
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link href="../static/css/font-awesome-all.css" rel="stylesheet">
+<link href="../static/css/flaticon.css" rel="stylesheet">
+<link href="../static/css/owl.css" rel="stylesheet">
+<link href="../static/css/bootstrap.css" rel="stylesheet">
+<link href="../static/css/jquery.fancybox.min.css" rel="stylesheet">
+<link href="../static/css/animate.css" rel="stylesheet">
+<link href="../static/css/global.css" rel="stylesheet">
+<link href="../static/css/header.css" rel="stylesheet">
+<link href="../static/css/style.css" rel="stylesheet">
+<link href="../static/css/responsive.css" rel="stylesheet">
+<link href="../static/css/jquery.Jcrop.css" rel="stylesheet">
+
+</head>
+
+<!-- page wrapper -->
+<body class="boxed_wrapper">
+
+    <!-- preloader -->
+    <div class="preloader">
+        <div id="handle-preloader" class="handle-preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
+                <div class="txt-loading">
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="I" class="letters-loading">
+                        I
+                    </span>
+                    <span data-text-preloader="L" class="letters-loading">
+                        L
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="B" class="letters-loading">
+                        B
+                    </span>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <!-- preloader end -->
+    
+    <!-- main header -->
+    <header class="main-header style-three">
+        <div class="header-upper">
+            <div class="outer-box clearfix">
+                <div class="left-column pull-left clearfix">
+                    <div class="logo-box pull-left">
+                        <figure class="logo"><a href="{{url_for('show_index')}}"><img src="../static/images/logo-3-copy.png" alt=""></a></figure>
+                    </div>
+                    <div class="menu-area pull-right clearfix">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li class="current"><a href="{{url_for('show_index')}}">主页&ensp;丨&ensp;</a>
+                                    </li> 
+                                    <li class="dropdown"><a href="{{url_for('show_project')}}">项目   </a>
+                                        <ul>
+                                            <li><a href="{{url_for('show_bnz')}}">白内障诊断<i class="flaticon-next"></i></a></li>
+                                            <li><a href="{{url_for('show_project')}}">了解更多<i class="flaticon-next"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{url_for('show_team')}}">&ensp;丨&ensp;团队</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="right-column pull-right clearfix">
+                    <div class="btn-box"><a href="{{url_for('show_index')}}" class="theme-btn style-six">联系我们</a></div>
+                    <div class="language">
+                        <div class="lang-btn">
+                            <span class="flag"><img src="../static/images/icons/icon-lang.png" alt="" title="English"></span>
+                            <span class="txt">Eng</span>
+                            <span class="arrow fa fa-angle-down"></span>
+                        </div>
+                        <div class="lang-dropdown">
+                            <ul>
+                                <li><a href="{{url_for('show_index')}}">German</a></li>
+                                <li><a href="{{url_for('show_index')}}">Italian</a></li>
+                                <li><a href="{{url_for('show_index')}}">Chinese</a></li>
+                                <li><a href="{{url_for('show_index')}}">Russian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="social-links clearfix">
+                        <li><a href="#"><i class="fab fa-github fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-envelope fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-home fa-lg"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--sticky Header-->
+        <div class="sticky-header">
+            <div class="outer-box clearfix">
+                <div class="left-column pull-left">
+                    <figure class="logo-box"><a href="{{url_for('show_index')}}"><img src="../static/images/logo-3-copy.png" alt=""></a></figure>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+                <div class="right-column pull-right clearfix">
+                    <div class="btn-box"><a href="{{url_for('show_index')}}" class="theme-btn style-six">联系我们</a></div>
+                    <div class="language">
+                        <div class="lang-btn">
+                            <span class="flag"><img src="../static/images/icons/icon-lang.png" alt="" title="English"></span>
+                            <span class="txt">Eng</span>
+                            <span class="arrow fa fa-angle-down"></span>
+                        </div>
+                        <div class="lang-dropdown">
+                            <ul>
+                                <li><a href="{{url_for('show_index')}}">German</a></li>
+                                <li><a href="{{url_for('show_index')}}">Italian</a></li>
+                                <li><a href="{{url_for('show_index')}}">Chinese</a></li>
+                                <li><a href="{{url_for('show_index')}}">Russian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="social-links clearfix">
+                        <li><a href="#"><i class="fab fa-github fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-envelope fa-lg"></i></a></li>
+                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-home fa-lg"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- main-header end -->
+
+    <!-- Mobile Menu  -->
+    <div class="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <div class="close-btn"><i class="fas fa-times"></i></div>
+        
+        <nav class="menu-box">
+            <div class="nav-logo"><a href="{{url_for('show_index')}}"><img src="../static/images/logo.png" alt="" title=""></a></div>
+            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+            <div class="contact-info">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>Chicago 12, Melborne City, USA</li>
+                    <li><a href="">+88 01682648101</a></li>
+                    <li><a href="mailto:info@example.com">info@example.com</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <ul class="clearfix">
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-twitter"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-facebook-square"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-pinterest-p"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-instagram"></span></a></li>
+                    <li><a href="{{url_for('show_index')}}"><span class="fab fa-youtube"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- End Mobile Menu -->
+
+    <!--Page Title-->
+    <section class="page-title text-center style-two">
+        <div class="pattern-layer" style="background-image: url(../static/images/shape/shape-58-copy.png);"></div>
+        <div class="auto-container">
+            <div class="content-box">
+                <h1>白内障诊断</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{url_for('show_project')}}">项目</a></li>
+                    <li><span>\\</span></li>
+                    <li>白内障诊断</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- testimonial-style-two -->
+    <section class="testimonial-style-two">
+        <div class="title-inner bg-color-3">
+            <div class="pattern-layer" style="background-image: url(../static/images/shape/shape-15-copy.png);"></div>
+            <div class="auto-container">
+                <div class="sec-title text-left light">
+                    <p>INTRODUCTION</p>
+                    <h2>项目简介</h2>
+                    <div class="decor" style="background-image: url(../static/images/icons/decor-1.png);"></div>
+                </div>
+            </div>
+        </div>
+        <div class="lower-content">
+            <div class="auto-container">
+                <div class="testimonial-content">
+                    <div class="inner-box" style="margin-top: -170px;">
+                        <div class="image-box" 
+                        style="padding: 31px 185px 31px 100px; 
+                        clip-path: polygon(0% 0%, 100% 0%, 75% 100%, 0% 100%, 0% 0%);">
+                            <div class="single-item">
+                                <div class="box">
+                                    <div class="icon-box"><i class="far fa-user"></i>
+                                        <span>principal</span>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <p>开发小组</p>
+                                </div>
+                            </div>
+                            <div class="single-item">
+                                <div class="box">
+                                    <div class="icon-box"><i class="far fa-sun"></i>
+                                        <span>Technologies</span>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <p>Deep learning, Multi-task Learing</p>
+                                </div>
+                            </div>
+                            <div class="single-item">
+                                <div class="box">
+                                    <div class="icon-box"><i class="far fa-calendar-alt"></i>
+                                        <span>Time Period</span>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <p>5 months</p>
+                                </div>
+                            </div>
+                            <div class="single-item">
+                                <div class="box">
+                                    <div class="icon-box"><i class="far fa-bookmark"></i>
+                                        <span>collaboration</span>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <p><a href="mailto:info@example.com">华西临床医学院</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-box" style="padding: 60px 130px 80px 140px;">
+                            <div class="icon-box" style="background-image: url(../static/images/icons/icon-4-copy.png);"></div>
+                            <div class="text">
+                                <p style="font-size: 15px;">
+                                     &emsp;&emsp;白内障是世界范围内视力受损的主要原因，
+                                     也是导致失明最重要的眼部疾病之一。
+                                     本项目利用深度学习技术，构建多任务学习网络，
+                                     实现白内障的智能诊断，为白内障患者提供方便、快捷、准确的白内障诊断方式；
+                                     同时辅助医生进行临床诊断。
+                                    </p>
+                            </div>
+                            <div class="author-info">
+                                <h4>白内障诊断</h4>
+                                <span class="designation">AI & MEDICINE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- testimonial-style-two end -->
+
+    <!-- project-two-column -->
+    <section class="project-two-column project-page" style="padding: 30px 0px 80px 0px;">
+        <div class="title-inner">
+            <div class="auto-container">
+                <div class="sec-title text-left light" >
+                    <p style="color: #1d165c;">APPLICATION</p>
+                    <h2 style="color: #1d165c;">项目应用</h2>
+                    <div class="decor" style="background-image: url(../static/images/icons/decor-4.png);"></div>
+                </div>
+            </div>
+        </div>
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-5 col-md-6 col-sm-12 case-block">
+                    <form enctype='multipart/form-data'  method="POST" name="form0" id="form0">
+                        <div class="inner-box">
+                            <label style="display: none;">X1 <input type="text" name="x" id="x" size="4" /></label>
+                            <label style="display: none;">Y1 <input type="text" name="y" id="y" size="4" /></label>
+                            <label style="display: none;">X2 <input type="text" name="x2" id="x2" size="4" /></label>
+                            <label style="display: none;">Y2 <input type="text" name="y2" id="y2" size="4" /></label>
+                            <label style="display: none;">W <input type="text" name="w" id="w" size="4" /></label>
+                            <label style="display: none;">H <input type="text" name="h" id="h" size="4" /></label>
+                            <div class="image-box" style=" height: 470px;border-style: solid; border-color: #7a2d9e;">
+                                <div id="target" class="jcrop_w" style="overflow: hidden;height: 465px;width: 465px;">
+                                    <img src="" id="img0" style="position: relative;" />
+                                </div>
+                            </div>
+                            <div class="lower-content" style="text-align: center;">
+                                <label>
+                                    <span>
+                                        <div class="btn-box" style="text-align: center;">
+                                            <div class="theme-btn style-six" style="display: inline-block;margin: 20px;">上传图片</div>
+                                        </div>
+                                    </span>
+                                    <input type="file" name="file0" id="file0" multiple="multiple" style="display: none;"/>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-2">
+                    <figure class="icon-box" style="height: 400px; text-align: center;">
+                        <i class="fa fa-circle-notch fa-3x" 
+                            aria-hidden="true"
+                            id="iconCircle0"  
+                            style="margin-top: 230px;             
+                            background-image: linear-gradient(135deg, 
+                            #d83170 0%, 
+                            #772d9f 5%, 
+                            #d83170 100%);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            color:transparent;"></i>
+                        <!--
+                        <img src="../static/images/icons/decor-6.png" style="display: inline-block; margin-top: 200px;">
+                        -->
+                    </figure>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12 case-block">
+                    <div class="inner-box">
+                        <figure class="image-box" style="height: 470px;border-style: solid; border-color: #7a2d9e;">
+                            <div id="resultTxt" 
+                            style="font-size: 30px;
+                                color: black;
+                                line-height: 40px;
+                                margin: 30px;
+                                margin-top: 40px;">
+                            </div>
+                        </figure>
+                        <div class="lower-content">
+                            <div class="btn-box" style="text-align: center;">
+                                <div class="theme-btn style-six" style="display: inline-block;margin: 20px;">保存结果</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- project-two-column end -->
+
+    <!-- footer-style-three -->
+    <footer class="footer-style-three">
+        <div class="footer-top">
+            <div class="pattern-layer">
+                <div class="pattern-1" style="background-image: url(../static/images/shape/shape-60-copy.png);"></div>
+                <div class="pattern-2 wow slideInDown" data-wow-delay="00ms" data-wow-duration="3500ms" style="background-image: url(../static/images/shape/shape-61.png);"></div>
+            </div>
+            <div class="auto-container">
+                <div class="widget-section">
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget about-widget">
+                                <div class="widget-title">
+                                    <h3>关于团队</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="text">
+                                        <p>我们的目标是通过学习，研究深度学习算法，基于白内障B超图像，给出高准确率的诊断结果。
+                                            同时在开发的过程中，在问题的启发下，不断完善，改进算法。</p>
+                                    </div>
+                                    <figure class="footer-logo"><a href="{{url_for('show_index')}}"><img src="../static/images/footer-logo-3-copy.png" alt=""></a></figure>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget links-widget">
+                                <div class="widget-title">
+                                    <h3>一些链接</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="clearfix">
+                                        <li><a href="{{url_for('show_index')}}">Video Intelligence</a></li>
+                                        <li><a href="{{url_for('show_index')}}">Computer Vision</a></li>
+                                        <li><a href="{{url_for('show_index')}}">Speech Recognition</a></li>
+                                        <li><a href="{{url_for('show_index')}}">Technology Stack</a></li>
+                                        <li><a href="{{url_for('show_index')}}">NL Understanding</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget contact-widget">
+                                <div class="widget-title">
+                                    <h3>联系我们</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="clearfix"> 
+                                        <li>
+                                            <span>电话:</span>
+                                            <a href="">+00 123456789</a>
+                                        </li>
+                                        <li>
+                                            <span>邮箱:</span>
+                                            <a href="#">our@email.com</a>
+                                        </li>
+                                        <li>
+                                            <span>地址:</span>
+                                            四川大学江安校区，成都，中国
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget subscribe-widget">
+                                <div class="widget-title">
+                                    <h3>反馈信息</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="subscribe-form">
+                                        <form action="mailto:1121015425@qq.com" method="post">
+                                            <div class="form-group">
+                                                <input type="subject" name="email" placeholder="您的建议" required="">
+                                                <button type="submit" class="theme-btn style-six">提交</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <ul class="social-links clearfix">
+                                        <li><a href="#"><i class="fab fa-github fa-lg"></i></a></li>
+                                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-envelope fa-lg"></i></a></li>
+                                        <li><a href="{{url_for('show_index')}}"><i class="fa fa-home fa-lg"></i></a></li>
+                                        <li><a href="{{url_for('show_index')}}"><i class="fab fa-google-plus-g"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom main-footer">
+            <div class="auto-container clearfix">
+                <div class="copyright pull-left">
+                    <p>Powered by &copy; <a href="http://www.bootstrapmb.com/">Naxly</a>.</p>
+                </div>
+                <ul class="footer-nav pull-right">
+                    <li><a href="{{url_for('show_index')}}">Privacy Policy</a></li>
+                    <li><a href="{{url_for('show_index')}}">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- footer-style-three end -->
+
+<!--Scroll to top-->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="fas fa-angle-up"></span>
+</button>
+
+
+<!-- jequery plugins -->
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/owl.js"></script>
+<script src="../static/js/wow.js"></script>
+<script src="../static/js/validation.js"></script>
+<script src="../static/js/jquery.fancybox.js"></script>
+<script src="../static/js/appear.js"></script>
+<script src="../static/js/jquery.countTo.js"></script>
+<script src="../static/js/scrollbar.js"></script>
+<script src="../static/js/tilt.jquery.js"></script>
+<script src="../static/js/bxslider.js"></script>
+<script src="../static/js/submit.js"></script>
+<script src="../static/js/jquery.Jcrop.js"></script>
+<script src="../static/js/basic.js"></script>
+
+<!-- main-js -->
+<script src="../static/js/script.js"></script>
+
+<script>
+    $("#iconCircle0").click (function(){
+        console.log("click1");
+        iconSpin();
+        var form = new FormData(document.getElementById("form0"));
+        $.ajax({
+            url:"{{url_for('upload_file')}}",
+            type: "post",
+            data: form,
+            dataType: "json",
+            processData:false,
+            contentType:false,
+            success:function(data){
+                $("#resultTxt").html(data['result']);
+                releaseSelect();
+                iconSpinStop();
+            },
+            error:function(e){
+                alert("error");
+            }
+        })
+    });
+</script>
+
+</body><!-- End of .page_wrapper -->
+</html>
+    
